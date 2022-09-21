@@ -3,10 +3,15 @@ const path = require('path');
 
 const app = express();
 
-app.use('/', express.static('public'))
-
-app.use('*', (req, res) => {
-    res.status(404).sendFile(path.resolve(__dirname, '404.html'));
+app.get('/', (req, res) => {
+    console.log('requiest is ', req);
+    req.status(200).send();
 })
+
+app.get("/users", (res, req) => {});
+app.get("/users/1", (res, req) => {});
+app.post("/users", (res, req) => {});
+app.patch("/users/1", (res, req) => {});
+app.delete("/users/1", (res, req) => {});
 
 module.exports = app;
